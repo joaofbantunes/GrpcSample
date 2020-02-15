@@ -11,7 +11,8 @@ namespace GrpcSample.Client
         static async Task Main(string[] args)
         {
             const string Name = ".NET Client";
-            using var channel = GrpcChannel.ForAddress("https://localhost:5001");
+            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true); //don't want to worry with HTTPS stuff
+            using var channel = GrpcChannel.ForAddress("http://localhost:5000");
             var client = new Greeter.GreeterClient(channel);
 
             var r = await client.SayHelloAsync(new HelloRequest {Name = Name});
