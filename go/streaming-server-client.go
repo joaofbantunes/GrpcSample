@@ -5,7 +5,8 @@ import (
 	"log"
 	"os"
 
-	pb "generated"
+	pb "client/generated"
+
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"

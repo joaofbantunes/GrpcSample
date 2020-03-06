@@ -40,13 +40,13 @@ dotnet add package Grpc.Tools
 1. Installed Protobuf compiler (protoc)
 1. Installed Go :)
 1. Set GOPATH environment variable to where the projects will be kept
-1. Installed gRPC for Go `go get google.golang.org/grpc`
-1. Installed the Go code generator plugin `go get -u github.com/golang/protobuf/protoc-gen-go` (it will be on the GOPATH and protoc is able to find it)
+1. Added gRPC for Go to `go.mod` file (alternatively, could install with `go get google.golang.org/grpc`, but would need to do again after clone in another computer)
+1. If needed, install the Go code generator plugin `go get -u github.com/golang/protobuf/protoc-gen-go`, but probably not needed as protobuf is in the `go.mod` file (it will be on the GOPATH and protoc is able to find it)
 
 ### Development
 
 1. Create `generated` folder to put the generated code in
-1. Generate code from proto file `protoc --go_out=plugins=grpc:generated --proto_path ..\..\dotnet\src\GrpcSample.Web\Protos\ greet.proto`
+1. Generate code from proto file `protoc --go_out=plugins=grpc:generated --proto_path ..\dotnet\src\GrpcSample.Web\Protos\ greet.proto`
 1. Write the code!
 
 Test request/response client with `go run unary-client.go` and the streaming client with `go run streaming-client.go`
